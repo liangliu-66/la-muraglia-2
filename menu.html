@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Completo | La Muraglia 2 Savona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo-link">
+            <div class="logo-badge">
+                <span class="logo-kanji">長城</span>
+                <div class="logo-text">
+                    <span class="logo-title">LA MURAGLIA 2</span>
+                    <span class="logo-sub">MENU DIGITALE</span>
+                </div>
+            </div>
+        </a>
+        <a href="index.html" class="btn btn-secondary btn-sm">&larr; Torna alla Home</a>
+    </header>
+
+    <div id="top"></div>
+
+    <section class="section menu-section">
+        <div class="container">
+            <div class="text-center">
+                <span class="subtitle">La nostra carta</span>
+                <h2>Menu Completo</h2>
+                <div class="divider center"></div>
+            </div>
+
+            <div class="filter-wrapper">
+                <label for="category-select" class="filter-label">Filtra Categoria:</label>
+                <select id="category-select" class="custom-select">
+                    <option value="all">Tutte le categorie</option>
+                    <option value="antipasti-cinese">Antipasti Cinesi</option>
+                    <option value="zuppe">Zuppe</option>
+                    <option value="riso">Riso</option>
+                    <option value="pasta">Pasta</option>
+                    <option value="pollo">Pollo</option>
+                    <option value="anatra">Anatra</option>
+                    <option value="manzo">Manzo</option>
+                    <option value="maiale">Maiale</option>
+                    <option value="pesce">Pesce & Gamberi</option>
+                    <option value="tofu-verdure">Tofu & Verdure</option>
+                    <option value="giapponese-antipasti">Antipasti Giapponesi</option>
+                    <option value="primi-secondi-jap">Primi & Griglia Jap</option>
+                    <option value="sashimi-sushi">Sashimi & Sushi Misto</option>
+                    <option value="nigiri">Nigiri</option>
+                    <option value="uramaki">Uramaki</option>
+                    <option value="hosomaki-roll">Hosomaki & Roll</option>
+                    <option value="gunkan-temaki">Gunkan & Temaki</option>
+                    <option value="futomaki">Futomaki</option>
+                    <option value="tartare-poke">Tartare & Poke</option>
+                    <option value="tempura">Tempura</option>
+                </select>
+            </div>
+
+            <div class="menu-grid" id="menu-grid"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 La Muraglia 2 Savona. Corso Colombo 16r/22r. Tel: +39 019 825968</p>
+        </div>
+    </footer>
+
+    <a href="#top" class="sticky-back-top visible" aria-label="Torna in alto">↑</a>
+
+    <script src="script.js"></script>
+</body>
+</html>
