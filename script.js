@@ -156,7 +156,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Rendering e Filtro Menu a Categorie (menu.html)
+    // 2. Modali Prenota & Ordina
+    const modalPrenota = document.getElementById('modal-prenota');
+    const modalAsporto = document.getElementById('modal-asporto');
+
+    const openPrenotaHero = document.getElementById('open-prenota-hero');
+    const openPrenotaNav = document.getElementById('open-prenota-nav');
+    const openAsportoHero = document.getElementById('open-asporto-hero');
+    const openAsportoNav = document.getElementById('open-asporto-nav');
+
+    const closePrenota = document.getElementById('close-prenota');
+    const closeAsporto = document.getElementById('close-asporto');
+
+    function toggleModal(modal, show) {
+        if (modal) {
+            if (show) {
+                modal.classList.add('active');
+            } else {
+                modal.classList.remove('active');
+            }
+        }
+    }
+
+    if (openPrenotaHero) openPrenotaHero.addEventListener('click', () => toggleModal(modalPrenota, true));
+    if (openPrenotaNav) openPrenotaNav.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        toggleModal(modalPrenota, true); 
+        if (navMenu) navMenu.classList.remove('active'); 
+    });
+
+    if (openAsportoHero) openAsportoHero.addEventListener('click', () => toggleModal(modalAsporto, true));
+    if (openAsportoNav) openAsportoNav.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        toggleModal(modalAsporto, true); 
+        if (navMenu) navMenu.classList.remove('active'); 
+    });
+
+    if (closePrenota) closePrenota.addEventListener('click', () => toggleModal(modalPrenota, false));
+    if (closeAsporto) closeAsporto.addEventListener('click', () => toggleModal(modalAsporto, false));
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modalPrenota) toggleModal(modalPrenota, false);
+        if (event.target === modalAsporto) toggleModal(modalAsporto, false);
+    });
+
+    // 3. Rendering e Filtro Menu a Categorie (menu.html)
     const menuContainer = document.getElementById('menu-container');
     const categorySelect = document.getElementById('category-select');
 
@@ -214,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Pulsante Sticky Torna in Alto
+    // 4. Pulsante Sticky Torna in Alto
     const stickyTopBtn = document.getElementById('stickyTop');
     if (stickyTopBtn) {
         window.addEventListener('scroll', () => {
