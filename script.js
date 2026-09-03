@@ -121,39 +121,32 @@ const menuItems = [
     { code: "G45.", name: "Tempura mista", desc: "Gamberoni, zucchine e carote fritte", price: "9,00 €", cat: "tempura" }
 ];
 
+const categoryNames = {
+    "antipasti-cinese": "Antipasti Cinesi",
+    "zuppe": "Zuppe",
+    "riso": "Primi di Riso",
+    "pasta": "Primi di Pasta",
+    "pollo": "Secondi di Pollo",
+    "anatra": "Secondi di Anatra",
+    "manzo": "Secondi di Manzo",
+    "maiale": "Secondi di Maiale",
+    "pesce": "Pesce & Gamberi",
+    "tofu-verdure": "Tofu & Verdure",
+    "giapponese-antipasti": "Antipasti Giapponesi",
+    "primi-secondi-jap": "Primi & Griglia Giapponese",
+    "sashimi-sushi": "Sashimi & Sushi Misto",
+    "nigiri": "Nigiri Sushi",
+    "uramaki": "Uramaki Roll",
+    "hosomaki-roll": "Hosomaki & Special Roll",
+    "gunkan-temaki": "Gunkan & Temaki",
+    "futomaki": "Futomaki",
+    "tartare-poke": "Tartare & Poke Bowl",
+    "tempura": "Tempura & Fritti"
+};
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Render Menu nella pagina menu.html
-    const menuGrid = document.getElementById('menu-grid');
-    const categorySelect = document.getElementById('category-select');
-
-    if (menuGrid && categorySelect) {
-        function renderMenu(category) {
-            menuGrid.innerHTML = '';
-            const filteredItems = category === 'all' ? menuItems : menuItems.filter(item => item.cat === category);
-
-            filteredItems.forEach(item => {
-                const el = document.createElement('div');
-                el.className = 'menu-item';
-                el.innerHTML = `
-                    <div class="menu-item-info">
-                        <div><span class="menu-item-code">${item.code}</span><span class="menu-item-title">${item.name}</span></div>
-                        ${item.desc ? `<div class="menu-item-desc">${item.desc}</div>` : ''}
-                    </div>
-                    <div class="menu-item-price">${item.price}</div>
-                `;
-                menuGrid.appendChild(el);
-            });
-        }
-
-        renderMenu('all');
-
-        categorySelect.addEventListener('change', (e) => {
-            renderMenu(e.target.value);
-        });
-    }
-
-    // Gestione Menu Mobile
+    // 1. Menu Mobile Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
 
@@ -163,7 +156,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Sticky Button
+    // 2. Rendering e Filtro Menu a Categorie (menu.html)
+    const menuContainer = document.getElementById('menu-container');
+    const categorySelect = document.getElementById('category-select');
+
+    if (menuContainer && categorySelect) {
+        
+        function renderCategorizedMenu(selectedCategory) {
+            menuContainer.innerHTML = '';
+
+            const categoriesToRender = selectedCategory === 'all' 
+                ? Object.keys(categoryNames) 
+                : [selectedCategory];
+
+            categoriesToRender.forEach(catKey => {
+                const itemsInCat = menuItems.filter(item => item.cat === catKey);
+
+                if (itemsInCat.length > 0) {
+                    const catBlock = document.createElement('div');
+                    catBlock.className = 'category-block';
+
+                    const catTitle = document.createElement('h3');
+                    catTitle.className = 'category-title';
+                    catTitle.textContent = categoryNames[catKey] || catKey;
+                    catBlock.appendChild(catTitle);
+
+                    const itemsList = document.createElement('div');
+                    itemsList.className = 'menu-items-list';
+
+                    itemsInCat.forEach(item => {
+                        const itemCard = document.createElement('div');
+                        itemCard.className = 'menu-item-card';
+
+                        itemCard.innerHTML = `
+                            <div class="menu-item-info">
+                                <div class="menu-item-header">
+                                    <span class="menu-item-code">${item.code}</span>
+                                    <span class="menu-item-title">${item.name}</span>
+                                </div>
+                                ${item.desc ? `<div class="menu-item-desc">${item.desc}</div>` : ''}
+                            </div>
+                            <div class="menu-item-price">${item.price}</div>
+                        `;
+                        itemsList.appendChild(itemCard);
+                    });
+
+                    catBlock.appendChild(itemsList);
+                    menuContainer.appendChild(catBlock);
+                }
+            });
+        }
+
+        renderCategorizedMenu('all');
+
+        categorySelect.addEventListener('change', (e) => {
+            renderCategorizedMenu(e.target.value);
+        });
+    }
+
+    // 3. Pulsante Sticky Torna in Alto
     const stickyTopBtn = document.getElementById('stickyTop');
     if (stickyTopBtn) {
         window.addEventListener('scroll', () => {
