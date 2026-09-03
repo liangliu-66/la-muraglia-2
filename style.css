@@ -42,6 +42,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--bg-dark); }
 
 .divider { width: 50px; height: 3px; background-color: var(--jade); margin: 10px 0 20px 0; }
 .divider.center { margin: 10px auto 20px auto; }
+.text-center { text-align: center; }
 
 /* Navbar */
 .navbar {
@@ -113,6 +114,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--bg-dark); }
     margin: 0 auto;
 }
 
+/* Pulsanti */
 .btn {
     display: block;
     width: 100%;
@@ -128,7 +130,6 @@ h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--bg-dark); }
 .btn-primary { background-color: var(--red-primary); color: var(--white-soft); border: none; }
 .btn-secondary { border: 2px solid var(--jade); color: var(--white-soft); background: transparent; }
 
-/* Pulsante Ordina Online Arancione */
 .btn-asporto, .btn-ipratico {
     background-color: var(--orange-ipratico) !important;
     color: var(--white-soft) !important;
@@ -136,12 +137,12 @@ h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--bg-dark); }
 }
 
 .btn-asporto:hover, .btn-ipratico:hover { background-color: var(--orange-hover) !important; }
-
 .btn-sm { padding: 6px 12px; font-size: 0.85rem; width: auto; display: inline-block; }
 .btn-large { max-width: 280px; margin: 15px auto 0 auto; }
 
-/* Sezioni */
+/* Sezioni Generali */
 .section { padding: 35px 5%; }
+.container { max-width: 1200px; margin: 0 auto; }
 .menu-preview-section { background-color: #FFF; }
 .reserve-section { background-color: #F4EFEA; }
 .reserve-grid { display: grid; gap: 15px; margin-top: 20px; }
@@ -163,35 +164,108 @@ h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--bg-dark); }
 
 .price-card {
     background: var(--white-soft);
-    border: 2px solid var(--red-primary); /* Cornice Rossa per Pranzo e Cena */
+    border: 2px solid var(--red-primary);
     padding: 16px 20px;
     border-radius: 8px;
     text-align: center;
 }
 
-.price-card h3 {
-    font-size: 1.15rem;
-    margin-bottom: 2px;
-}
-
-.price {
-    font-size: 1.5rem; /* Ridotto per Mobile */
-    font-weight: bold;
-    color: var(--red-primary);
-    margin: 4px 0;
-}
-
-.price-card small {
-    font-size: 0.75rem;
-    color: #665550;
-}
+.price-card h3 { font-size: 1.15rem; margin-bottom: 2px; }
+.price { font-size: 1.5rem; font-weight: bold; color: var(--red-primary); margin: 4px 0; }
+.price-card small { font-size: 0.75rem; color: #665550; }
 
 /* Asporto */
 .asporto-section { background-color: #FFF; }
 .platforms-grid { display: grid; gap: 12px; margin-top: 18px; }
-.platform-card { background: var(--white-soft); border: 1px solid #E5DEC9; padding: 16px; border-radius: 8px; text-decoration: none; color: inherit; }
+.platform-card { background: var(--white-soft); border: 1px solid #E5DEC9; padding: 16px; border-radius: 8px; text-decoration: none; color: inherit; display: block; }
 .platform-name { font-weight: bold; font-size: 1rem; }
 .btn-link { display: inline-block; margin-top: 6px; font-weight: bold; color: var(--red-primary); font-size: 0.85rem; }
+
+/* Struttura Menu Impaginato a Categorie */
+.filter-wrapper { max-width: 400px; margin: 0 auto 25px auto; text-align: center; }
+.filter-label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--bg-dark); }
+.custom-select { width: 100%; padding: 12px; font-size: 1rem; border: 2px solid var(--jade); border-radius: 6px; background: #FFF; outline: none; }
+
+.menu-categories-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.category-block { background-color: transparent; }
+
+.category-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--white-soft);
+    background-color: var(--bg-dark);
+    padding: 10px 16px;
+    border-radius: 6px;
+    border-left: 5px solid var(--red-primary);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.menu-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.menu-item-card {
+    background: #FFFFFF;
+    border: 1px solid #E5DEC9;
+    padding: 14px 16px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.menu-item-info { flex: 1; }
+
+.menu-item-header {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 3px;
+}
+
+.menu-item-code {
+    font-weight: bold;
+    color: var(--red-primary);
+    font-size: 0.95rem;
+}
+
+.menu-item-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: #1A100E;
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.menu-item-desc {
+    font-size: 0.85rem;
+    color: #665550;
+    font-style: italic;
+    line-height: 1.4;
+    margin-top: 2px;
+}
+
+.menu-item-price {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--jade);
+    font-size: 1.05rem;
+    white-space: nowrap;
+    background-color: #F4EFEA;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
 
 /* Sticky Button */
 .sticky-back-top {
@@ -238,5 +312,6 @@ footer h3, footer h4 { color: var(--white-soft); margin-bottom: 8px; }
     .price { font-size: 2rem; }
     .reserve-grid, .platforms-grid { grid-template-columns: repeat(2, 1fr); }
     .platforms-grid { grid-template-columns: repeat(3, 1fr); }
+    .menu-items-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
     .footer-grid { grid-template-columns: repeat(3, 1fr); }
 }
